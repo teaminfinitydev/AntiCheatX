@@ -1,0 +1,136 @@
+# AntiCheatX Configuration
+
+# Plugin prefix
+prefix: "&8[&c&lAntiCheatX&8]"
+
+# Welcome message settings
+welcomeMessage:
+  # Enable/disable welcome message on player join
+  enabled: true
+  # Server name to display (leave empty to use server's default name)
+  serverName: ""
+  # Welcome message format
+  # Placeholders: %server% = server name, %player% = player name
+  message: "&a%server% &fserver protected by using &8[&c&lAntiCheatX&8]"
+  # Delay in ticks before sending the message (20 ticks = 1 second)
+  delay: 40
+
+# Violation thresholds (how many violations before player is kicked)
+violations:
+  fly: 10
+  speed: 8
+  reach: 6
+  xray: 3
+  irregularMovement: 8
+  killAura: 5
+  noFall: 5
+  timer: 5
+  scaffold: 5
+
+# Plugin messages
+messages:
+  adminAlert: "&8[&c&lAntiCheatX&8] &f%player% &cmay be using &f%cheat% &c(&f%violations% violations&c)"
+  kick: "&8[&c&lAntiCheatX&8] &cYou have been kicked for suspicious activity.\n&fReason: %cheat%\n\n&7If this is a mistake, please contact server staff."
+  warning: "&8[&c&lAntiCheatX&8] &cPlease disable any cheats or hacks you may be using."
+  ban: "&8[&c&lAntiCheatX&8] &cYou have been banned for using unfair advantages.\n&fReason: %cheat%\n&fDuration: %duration%\n\n&7If this is a mistake, please contact server staff."
+
+# Checks configuration
+checks:
+  # Fly check settings
+  fly:
+    enabled: true
+    # Maximum time (in milliseconds) a player can be in air before triggering detection
+    maxAirTime: 1500
+
+  # Speed check settings
+  speed:
+    enabled: true
+    # Base maximum movement speed (blocks per tick)
+    baseMaxSpeed: 0.75
+    # Sprinting speed multiplier
+    sprintMultiplier: 1.3
+    # Speed effect multiplier per level
+    speedEffectMultiplier: 0.2
+
+  # Reach check settings
+  reach:
+    enabled: true
+    # Maximum reach distance in blocks
+    maxReach: 3.5
+
+  # XRay detection settings
+  xray:
+    enabled: true
+    # List of ores considered valuable for XRay detection
+    valuableOres:
+      - DIAMOND_ORE
+      - DEEPSLATE_DIAMOND_ORE
+      - ANCIENT_DEBRIS
+      - EMERALD_ORE
+      - DEEPSLATE_EMERALD_ORE
+      - GOLD_ORE
+      - DEEPSLATE_GOLD_ORE
+    # Number of blocks that need to be mined before checking ratio
+    miningSampleSize: 100
+    # Threshold ratio (valuable blocks / total blocks) that triggers a violation
+    # Normal players typically have 1-5% valuable blocks
+    thresholdRatio: 0.10
+    # Time interval (in seconds) to reset mining statistics
+    # This prevents false positives from legitimate mining over long periods
+    detectionInterval: 1800
+
+  # Irregular movement check settings
+  irregularMovement:
+    enabled: true
+    # Detects impossible movement patterns like sharp turns at high speeds,
+    # wall-climbing, and other unusual movement behaviors
+
+  # KillAura detection settings
+  killAura:
+    enabled: true
+    # Detects combat hacks like KillAura, AutoAim, etc.
+
+  # NoFall detection settings
+  noFall:
+    enabled: true
+    # Detects when a player avoids fall damage
+
+  # Timer detection settings
+  timer:
+    enabled: true
+    # Detects client-side tick rate manipulation
+
+  # Scaffold detection settings
+  scaffold:
+    enabled: true
+    # Detects suspicious block placement patterns
+
+# Punishment settings
+punishments:
+  # Actions to take when violation threshold is reached
+  # Available types: NONE, WARN, KICK, BAN
+  actions:
+    fly: KICK
+    speed: KICK
+    reach: KICK
+    xray: KICK
+    irregularMovement: KICK
+    killAura: KICK
+    noFall: KICK
+    timer: KICK
+    scaffold: KICK
+
+  # Ban duration in minutes (0 = permanent)
+  banDuration: 60
+
+  # Should violations reset after a ban
+  resetAfterBan: true
+
+# Logging settings
+logging:
+  # Log violations to console
+  console: true
+  # Log violations to file
+  file: true
+  # File path (relative to plugin folder)
+  filePath: "logs/violations.log"

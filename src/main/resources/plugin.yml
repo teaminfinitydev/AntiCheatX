@@ -1,0 +1,24 @@
+name: AntiCheatX
+version: '1.0-SNAPSHOT'
+main: online.codenexa.antiCheatX
+api-version: '1.21'
+load: STARTUP
+authors: [ Chamika Samaraweera ]
+description: A powerful and configurable anti-cheat plugin for Paper Minecraft servers (version 1.21.1)
+website: https://codenexa.online
+commands:
+  acx:
+    description: Main command for AntiCheatX
+    usage: /acx [reload|status|violations <player>]
+    permission: anticheatx.admin
+    aliases: [anticheatx]
+permissions:
+  anticheatx.admin:
+    description: Allows access to administrative commands
+    default: op
+  anticheatx.alerts:
+    description: Receive notifications about potential cheaters
+    default: op
+  anticheatx.bypass:
+    description: Bypass all anti-cheat checks
+    default: false
