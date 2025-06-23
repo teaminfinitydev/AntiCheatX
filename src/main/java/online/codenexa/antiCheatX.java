@@ -354,9 +354,6 @@ public class antiCheatX extends JavaPlugin implements Listener {
 
         // Remove from alert receivers
         alertReceivers.remove(player.getUniqueId());
-
-        // Keep player data for a while in case they rejoin
-        // But clear it after some time (handled by the periodic task)
     }
 
     // Listener for player movement (check for fly, speed, and irregular movements)
