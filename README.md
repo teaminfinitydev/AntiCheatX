@@ -52,7 +52,7 @@ The plugin creates a comprehensive configuration file at `plugins/AntiCheatX/con
 ### Violation Thresholds
 ```yaml
 violations:
-  fly: 10          # Number of violations before punishment
+  fly: 10          # Number of violations before punishment.
   speed: 8
   xray: 3
   killAura: 5
